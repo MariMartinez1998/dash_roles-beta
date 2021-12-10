@@ -9,17 +9,13 @@ class Relacion extends Model
 {
     use HasFactory;
 
-    protected $table = '';
-    protected $table1 = '';
-    protected $table2 = '';
+    protected $table = 'users';
+    protected $blogs = 'blogs';
     
-    public function scopeGetListaservicios(){
-        return $query->select(
-            $this->table_areas . '.nombre',
-            $this->tabla . '.name as user',
-        )
-            ->join($this->table_area_user, 'users.id', '=', $this->table_area_user . '.id_user')
-            ->join($this->table_areas, $this->table_areas . '.id', '=', $this->table_area_user . '.id_area')
+    public function scopeGetListaservicios($query,$id){
+        return $query->select($this->table.'.*',$this->blogs.'.*')
+            ->join($this->blogs, $this->blogs.'.id_users', '=', $this->table.'.id')
+            ->where($this->table.'.id', $id)
             ->get();
     }
 

@@ -12,12 +12,14 @@ use App\Models\Relacion;
 class RelacionController extends Controller
 {
     //
-    public function index(){ 
+    public function index(){
 
-        $sql = 'SELECT * FROM users JOIN blogs ON blogs.id_users = users.id where users.id='.auth()->user()->id;
-       
-        $blog = DB::select($sql);
+        // $sql = 'SELECT * FROM users inner JOIN blogs ON blogs.id_users = users.id where users.id='.auth()->user()->id;
 
+        // $blog = DB::select($sql);
+
+        $blog = Relacion::GetListaservicios(auth()->user()->id);
+        
         return view('cliente.vista', compact('blog'));
     }
 }
