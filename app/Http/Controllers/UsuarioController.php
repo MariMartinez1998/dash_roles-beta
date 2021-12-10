@@ -34,7 +34,11 @@ class UsuarioController extends Controller
         return view('usuarios.index',compact('usuarios')); */
 
         //Con paginación
-        $usuarios = User::paginate(5);
+        $plate = $request->get('buscar');
+
+        $usuarios = User::where('plate','like',"%$plate%")->paginate(5);
+        
+        //$usuarios = User::paginate(5);
         return view('usuarios.index',compact('usuarios'));
         
 
@@ -62,15 +66,21 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'plate' => 'required',
             'name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'phone' => 'required',
+            'address' => 'required',
             'city' => 'required',
-            'street' => 'required',
             'state' => 'required',
             'zip_code' => 'required',
+            'vin' => 'required',
+            'model' => 'required',
+            'make' => 'required',
+            'color' => 'required',
+            'year' => 'required',
             'roles' => 'required'
             
         ]);
@@ -121,14 +131,20 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'plate' => 'required',
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
             'phone' => 'required',
+            'address' => 'required',
             'city' => 'required',
-            'street' => 'required',
             'state' => 'required',
             'zip_code' => 'required',
+            'vin' => 'required',
+            'model' => 'required',
+            'make' => 'required',
+            'color' => 'required',
+            'year' => 'required',
             'roles' => 'required'
         ]);
     

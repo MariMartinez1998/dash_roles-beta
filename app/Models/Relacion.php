@@ -18,7 +18,7 @@ class Relacion extends Model
             $this->table_areas . '.nombre',
             $this->tabla . '.name as user',
         )
-            ->join($this->table_area_user, 'users.id', '=', $this->table_area_user . '.id_user')
+            ->join($this->table_area_user, 'users.plate', '=', $this->table_area_user . '.id_plate')
             ->join($this->table_areas, $this->table_areas . '.id', '=', $this->table_area_user . '.id_area')
             ->get();
     }

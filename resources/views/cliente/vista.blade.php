@@ -14,7 +14,9 @@
                         <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
+                                    <th style="color:#fff;">Plate</th>
                                     <th style="color:#fff;">Name</th>
+                                    <th style="color:#fff;">Make</th>
                                     <th style="color:#fff;">Title</th>
                                     <th style="color:#fff;">Description</th> 
                                     <th style="color:#fff;">Check-in Time</th> 
@@ -26,7 +28,9 @@
                             @foreach ($blog as $blogs)
                             <tr>
                                 <td style="display: none;">{{ $blogs->id }}</td>  
-                                <td>{{ $blogs->name }}</td>                              
+                                <td>{{ $blogs->id_plate }}</td>  
+                                <td>{{ $blogs->name }}</td>  
+                                <td>{{ $blogs->make }}</td>                             
                                 <td>{{ $blogs->titulo }}</td>
                                 <td>{{ $blogs->contenido }}</td>
                                 <td>{{  $blogs->created_at }}</td>

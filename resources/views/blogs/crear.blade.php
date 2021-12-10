@@ -28,8 +28,8 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                   <label for="id_users">Id del usuario</label>
-                                   <input type="text" name="id_users" class="form-control">
+                                   <label for="id_plate">Plate</label>
+                                   <input type="text" name="id_plate" class="form-control">
                                 </div>
                             </div>
                         <div class="row">

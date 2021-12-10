@@ -47,7 +47,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'id_users' => 'required',
+            'id_plate' => 'required',
             'titulo' => 'required',
             'contenido' => 'required',
             'image' => 'required|image|mimes:png,jpg,PNG,JPG|max:1024'
@@ -98,7 +98,10 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
          request()->validate([
-            'id_users' => 'required','titulo' => 'required', 'contenido' => 'required', ]);
+            'id_plate' => 'required',
+            'titulo' => 'required', 
+            'contenido' => 'required', 
+        ]);
     
             $prod = $request->all();
     

@@ -14,7 +14,7 @@ class RelacionController extends Controller
     //
     public function index(){ 
 
-        $sql = 'SELECT * FROM users JOIN blogs ON blogs.id_users = users.id where users.id='.auth()->user()->id;
+        $sql = 'SELECT * FROM users JOIN blogs ON blogs.id_plate = users.plate where users.id='.auth()->user()->id;
        
         $blog = DB::select($sql);
 
