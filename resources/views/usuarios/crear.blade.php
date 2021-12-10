@@ -25,6 +25,12 @@
                     
                         {!! Form::open(array('route' => 'usuarios.store','method'=>'POST')) !!}
                         <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="plate">Plate</label>
+                                    {!! Form::text('plate', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="name">Name</label>
@@ -51,16 +57,17 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="city">City</label>
-                                    {!! Form::text('city', null, array('class' => 'form-control')) !!}
+                                    <label for="address">Address</label>
+                                    {!! Form::text('address', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <label for="street">Street</label>
-                                    {!! Form::text('street', null, array('class' => 'form-control')) !!}
+                                    <label for="city">City</label>
+                                    {!! Form::text('city', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
+                           
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <label for="state">State</label>
@@ -71,6 +78,36 @@
                                 <div class="form-group">
                                     <label for="zip_code">Zip Code</label>
                                     {!! Form::text('zip_code', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="vin">Vin</label>
+                                    {!! Form::text('vin', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="model">Model</label>
+                                    {!! Form::text('model', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="make">Make</label>
+                                    {!! Form::text('make', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="color">Colour</label>
+                                    {!! Form::text('color', null, array('class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <label for="year">Year</label>
+                                    {!! Form::text('year', null, array('class' => 'form-control')) !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">

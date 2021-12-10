@@ -22,15 +22,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'plate',
         'name',
         'last_name',
         'email',
         'password',
         'phone',
+        'address',
         'city',
-        'street',
         'state',
-        'zip_code'
+        'zip_code',
+        'vin',
+        'model',
+        'make',
+        'color',
+        'year'
     ];
 
     /**
@@ -55,6 +61,6 @@ class User extends Authenticatable
     //relacion uno a muchos
     
     public function blogs(){
-        return $this->hasMany(blogs::class, 'id_users', 'id');
+        return $this->hasMany(blogs::class, 'id_plate', 'plate');
     }
 }

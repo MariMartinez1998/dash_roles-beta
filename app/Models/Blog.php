@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_users','titulo', 'contenido', 'image'];
+    protected $fillable = ['id_plate','titulo', 'contenido', 'image'];
 
     //relacion uno a muchos inversa
     public function user(){
-        return $this->belongsTo(user::class, 'id', 'id_users');
+        return $this->belongsTo(user::class, 'plate', 'id_plate');
     }
 }

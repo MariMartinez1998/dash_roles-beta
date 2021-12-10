@@ -14,16 +14,13 @@
                 <img alt="image" src="{{ asset('img/logo.png') }}"
                      class="rounded-circle mr-1 thumbnail-rounded user-thumbnail ">
                 <div class="d-sm-none d-lg-inline-block">
-                    ¡Hello! {{\Illuminate\Support\Facades\Auth::user()->first_name}}</div>
+                    ¡Hello! {{\Illuminate\Support\Facades\Auth::user()->name}} {{\Illuminate\Support\Facades\Auth::user()->last_name}}</div>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">
                     Welcome, {{\Illuminate\Support\Facades\Auth::user()->name}}</div>
-                <a class="dropdown-item has-icon edit-profile" href="#" data-id="{{ \Auth::id() }}">
-                    <i class="fa fa-user"></i>Edit User Profile</a>
-                <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
-                            class="fa fa-lock"> </i>Change Password</a>
+                
                 <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
