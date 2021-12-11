@@ -4,10 +4,7 @@
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Users</h3>
-    </div>
-    <div class="section-body">
-        <div class="row">
-            <div class="col-xl-12">
+        <div class="col-xl-12">
                 <form action="" class="action">
                     <div class="form-row">
                         <div class="col-sm-4 my-1">
@@ -19,12 +16,16 @@
                     </div>
                 </form>
             </div>
+    </div>
+    <div class="section-body">
+        <div class="row">
+            
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
 
                         @can('create-user')
-                        <a class="btn btn-warning" href="{{ route('usuarios.create') }}">New</a>
+                        <a class="btn btn-warning fa fa-plus" href="{{ route('usuarios.create') }}">New</a>
 
                         @endcan
 
