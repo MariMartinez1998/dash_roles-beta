@@ -9,6 +9,8 @@ use App\Http\Controllers\BlogController;
 
 use App\Http\Controllers\RelacionController;
 
+use App\Http\Controllers\pdfController;
+
 use App\mail\WelcomeNewsletter;
 use Illuminate\Support\Facades\Mail;
 /*
@@ -44,6 +46,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('cliente', RelacionController::class);
+    Route::get('download-pdf', [BlogController::class, 'downloadPDF'])->name('download-pdf');
+    //Route::name('print')->get('/imprimir', 'Controller@imprimir');
 });
 
 //Envio de correos

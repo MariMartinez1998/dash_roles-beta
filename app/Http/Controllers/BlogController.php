@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Blog;
+use Barryvdh\DomPDF\Facade as PDF;
+
+use Illuminate\Support\Facades\DB;
+use App\Models\Relacion;
+use App\Models\User;
 
 class BlogController extends Controller
 {
@@ -20,14 +25,28 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {       
+        $plate = $request->get('buscar');
+
+        $blogs = Blog::where('id_plate','like',"%$plate%")->paginate(5);
+        
          //Con paginación
-         $blogs = Blog::paginate(5);
+         
          return view('blogs.index',compact('blogs'));
          //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $blogs->links() !!}    
     }
 
+    public function downloadPDF(){
+        
+        $sql = 'SELECT * FROM users JOIN blogs ON blogs.id_plate = users.plate';
+       
+        
+        $blogs = DB::select($sql);
+        view()->share('blogs.pdf',$blogs);
+        $pdf = PDF::loadView('blogs.pdf', compact('blogs'));
+        return $pdf->setPaper('a4', 'landscape')->download('reporte.pdf');
+   }
     /**
      * Show the form for creating a new resource.
      *

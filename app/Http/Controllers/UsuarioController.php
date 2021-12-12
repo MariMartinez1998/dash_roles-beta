@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 
+
+
 class UsuarioController extends Controller
 {
 
@@ -45,6 +47,7 @@ class UsuarioController extends Controller
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
 
+ 
     /**
      * Show the form for creating a new resource.
      *

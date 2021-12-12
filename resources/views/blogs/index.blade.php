@@ -4,6 +4,18 @@
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Services</h3>
+            <div class="col-xl-12">
+                <form action="" class="action">
+                    <div class="form-row">
+                        <div class="col-sm-4 my-1">
+                            <input type="text" class="form-control" name="buscar" placeholder="Search of plate">
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="submit" class="btn-primary" value="Search for">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="section-body">
             <div class="row">
@@ -11,10 +23,12 @@
                     <div class="card">
                         <div class="card-body">
                 
-            
+                        
                         @can('create-service')
-                        <a class="btn btn-warning" href="{{ route('blogs.create') }}">New</a>
+                        <a class="btn btn-warning fa fa-plus" href="{{ route('blogs.create') }}">New</a>
+                        <a class="fa fa-download btn btn-primary" name="printe" href="{{ route('download-pdf') }}">Print Report</a>
                         @endcan
+                        
             
                         <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
@@ -46,7 +60,7 @@
                                         @csrf
                                         @method('DELETE')
                                         @can('delete-service')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger ">Delete</button>
                                         @endcan
                                     </form>
                                 </td>
