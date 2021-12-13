@@ -4,14 +4,7 @@
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Users</h3>
-<<<<<<< HEAD
-    </div>
-    <div class="section-body">
-        <div class="row">
-            <div class="col-xl-12">
-=======
         <div class="col-xl-12">
->>>>>>> 770a5bf6806f76abf0e8d98cfa37a007cb6e8d7e
                 <form action="" class="action">
                     <div class="form-row">
                         <div class="col-sm-4 my-1">
@@ -23,23 +16,16 @@
                     </div>
                 </form>
             </div>
-<<<<<<< HEAD
-=======
     </div>
     <div class="section-body">
         <div class="row">
             
->>>>>>> 770a5bf6806f76abf0e8d98cfa37a007cb6e8d7e
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
 
                         @can('create-user')
-<<<<<<< HEAD
-                        <a class="btn btn-warning" href="{{ route('usuarios.create') }}">New</a>
-=======
                         <a class="btn btn-warning fa fa-plus" href="{{ route('usuarios.create') }}">New</a>
->>>>>>> 770a5bf6806f76abf0e8d98cfa37a007cb6e8d7e
 
                         @endcan
 
