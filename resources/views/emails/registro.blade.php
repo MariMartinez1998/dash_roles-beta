@@ -9,5 +9,6 @@
 <body>
     <h1>Correo Electronico</h1>
     <p>Usuario Registrado Exitosamente</p>
+    
 </body>
 </html>

@@ -15,7 +15,7 @@ class Relacion extends Model
     public function scopeGetListaservicios($query, $id)
     {
         return $query->select($this->table . '.*', $this->blogs . '.*')
-            ->join($this->blogs, $this->blogs . '.id_users', '=', $this->table . '.id')
+            ->join($this->blogs, $this->blogs . '.id_plate', '=', $this->table . '.plate')
             ->where($this->table . '.id', $id)
             ->get();
     }

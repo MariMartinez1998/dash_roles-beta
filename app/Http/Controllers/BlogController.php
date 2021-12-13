@@ -45,7 +45,7 @@ class BlogController extends Controller
         $blogs = DB::select($sql);
         view()->share('blogs.pdf',$blogs);
         $pdf = PDF::loadView('blogs.pdf', compact('blogs'));
-        return $pdf->setPaper('a4', 'landscape')->download('reporte.pdf');
+        return $pdf->setPaper('a4', 'landscape')->stream('reporte.pdf');
    }
     /**
      * Show the form for creating a new resource.
