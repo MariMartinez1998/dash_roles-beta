@@ -11,12 +11,12 @@ class Relacion extends Model
 
     protected $table = 'users';
     protected $blogs = 'blogs';
-    
-    public function scopeGetListaservicios($query,$id){
-        return $query->select($this->table.'.*',$this->blogs.'.*')
-            ->join($this->blogs, $this->blogs.'.id_users', '=', $this->table.'.id')
-            ->where($this->table.'.id', $id)
+
+    public function scopeGetListaservicios($query, $id)
+    {
+        return $query->select($this->table . '.*', $this->blogs . '.*')
+            ->join($this->blogs, $this->blogs . '.id_users', '=', $this->table . '.id')
+            ->where($this->table . '.id', $id)
             ->get();
     }
-
 }
