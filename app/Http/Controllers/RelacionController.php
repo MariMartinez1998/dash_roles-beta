@@ -19,7 +19,15 @@ class RelacionController extends Controller
         // $blog = DB::select($sql);
 
         $blog = Relacion::GetListaservicios(auth()->user()->id);
-        
+        // return $blog;
         return view('cliente.vista', compact('blog'));
+    }
+
+    public function show($id)
+    {
+        $blog = Relacion::GetServiciosDetalles(auth()->user()->id, $id);
+        $message = Relacion::GetMesages(auth()->user()->id, $id);
+        //return $message;
+        return view('cliente.seguimiento', compact('blog'), compact('message'));
     }
 }

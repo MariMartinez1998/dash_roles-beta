@@ -11,12 +11,35 @@ class Relacion extends Model
 
     protected $table = 'users';
     protected $blogs = 'blogs';
+    protected $message = 'message';
+    protected $mess_user_serv = 'message_user_servicio';
 
     public function scopeGetListaservicios($query, $id)
     {
-        return $query->select($this->table . '.*', $this->blogs . '.*')
+        return $query->select($this->table . '.*', $this->blogs . '.*', $this->blogs . '.id as id_servicio')
             ->join($this->blogs, $this->blogs . '.id_plate', '=', $this->table . '.plate')
             ->where($this->table . '.id', $id)
             ->get();
     }
+
+    public function scopeGetServiciosDetalles($query, $id, $idservicio)
+    {
+        return $query->select($this->table . '.*', $this->blogs . '.*')
+            ->join($this->blogs, $this->blogs . '.id_plate', '=', $this->table . '.plate')
+            ->where($this->table . '.id', $id)
+            ->where($this->blogs . '.id', $idservicio)
+            ->get();
+    }
+
+    public function scopeGetMesages($query, $id, $idservicio)
+    {
+        return $query->select($this->table . '.name', $this->table . '.last_name', $this->message . '.*')
+            ->join($this->mess_user_serv, $this->mess_user_serv . '.id_user', '=', $this->table . '.id')
+            ->join($this->blogs, $this->blogs . '.id', '=', $this->mess_user_serv . '.id_servicio')
+            ->join($this->message, $this->message . '.id', '=', $this->mess_user_serv . '.id_message')
+            ->where($this->table . '.id', $id)
+            ->where($this->blogs . '.id', $idservicio)
+            ->get();
+    }
 }
+

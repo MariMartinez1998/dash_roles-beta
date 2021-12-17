@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\BlogController;
 
 use App\Http\Controllers\RelacionController;
+use App\Http\Controllers\MessageController;
 
 use App\Http\Controllers\pdfController;
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('cliente', RelacionController::class);
+    Route::get('cliente/{id}', [RelacionController::class, 'show'])->name('seguimiento');
+    Route::post('menssage/store', [MessageController::class, 'store'])->name('message.store');
     Route::get('download-pdf', [BlogController::class, 'downloadPDF'])->name('download-pdf');
     //Route::name('print')->get('/imprimir', 'Controller@imprimir');
 });
