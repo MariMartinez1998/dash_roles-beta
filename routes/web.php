@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('blogs', BlogController::class);
     Route::resource('cliente', RelacionController::class);
     Route::get('download-pdf', [BlogController::class, 'downloadPDF'])->name('download-pdf');
+    Route::get('download-placa', [BlogController::class, 'downloadplaca'])->name('download-placa');
     //Route::name('print')->get('/imprimir', 'Controller@imprimir');
 });
 

@@ -64,6 +64,22 @@
     outline: none;
 }
 
+.container-img{
+    width: 260px;
+    height: 180px;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+}
+.grid-item {
+    padding: 0px 10px 0px 0px;;
+    text-align: center;
+  }
+
 a {
     color: #6777ef;
     font-weight: 500;
@@ -3244,7 +3260,7 @@ pre {
     border: none;
     position: relative;
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 8px;
     display: flex;
     align-items: center;
 }
@@ -3555,7 +3571,7 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li a.has-dro
 }
 
 body.sidebar-mini .main-sidebar .sidebar-menu li:hover > ul.dropdown-menu {
-    display: block !important;
+    display: none !important;
 }
 
 body.sidebar-mini .main-sidebar .sidebar-menu li:hover > ul.dropdown-menu li:hover > a {

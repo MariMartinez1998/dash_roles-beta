@@ -3,32 +3,33 @@
 @section('content')
 <section class="section">
     <div class="section-header">
+
         <h3 class="page__heading">Users</h3>
         <div class="col-xl-12">
-                <form action="" class="action">
-                    <div class="form-row">
-                        <div class="col-sm-4 my-1">
-                            <input type="text" class="form-control" name="buscar" placeholder="Search of plate">
-                        </div>
-                        <div class="col-auto my-1">
-                            <input type="submit" class="btn-primary" value="Search for">
-                        </div>
+            @can('create-user')
+            <a class="btn btn-warning" href="{{ route('usuarios.create') }}">New</a>
+            @endcan
+            <form action="" class="action float-right">
+                <div class="form-row float-right">
+
+                    <div class="col-auto my-1">
+                        <input type="submit" class="btn btn-primary" value="Search for">
                     </div>
-                </form>
-            </div>
+
+                    <div class="col-sm-4 my-1">
+                        <input type="text" class="form-control" name="buscar" placeholder="Plate">
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+
     <div class="section-body">
         <div class="row">
-            
+
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-body">
-
-                        @can('create-user')
-                        <a class="btn btn-warning fa fa-plus" href="{{ route('usuarios.create') }}">New</a>
-
-                        @endcan
-
+                    <div class="table-responsive">
                         <table class="table table-striped mt-2">
                             <thead style="background-color:#6777ef">
                                 <th style="display:none;">ID</th>
@@ -48,6 +49,8 @@
                                 <th style="color:#fff;">Colour</th>
                                 <th style="color:#fff;">Year</th>
                                 <th style="color:#fff;">Actions</th>
+
+
                             </thead>
                             <tbody>
                                 @foreach ($usuarios as $usuario)
@@ -75,19 +78,25 @@
                                     <td>{{ $usuario->color }}</td>
                                     <td>{{ $usuario->year }}</td>
                                     <td>
-
-                                        @can('edit-user')
-                                        <a class="btn btn-info"
-                                            href="{{ route('usuarios.edit',$usuario->id) }}">Edit</a>
-                                        @endcan
-
-                                        @can('delete-user')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',
-                                        $usuario->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                        {!! Form::close() !!}
-                                        @endcan
+                                        <div class="btn-toolbar" role="toolbar">
+                                            <div class="btn-group btn-group-justified">
+                                            <div class="grid-container">
+                                                <div class="grid-item">
+                                                    @can('edit-user')
+                                                    <a class="btn btn-info"  href="{{ route('usuarios.edit',$usuario->id) }}">Edit</a>
+                                                    @endcan
+                                                </div>
+                                                <div class="grid-item">
+                                                    @can('delete-user')
+                                                    {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',                                                $usuario->id],'style'=>'display:inline']) !!}
+                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    {!! Form::close() !!}
+                                                    @endcan
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

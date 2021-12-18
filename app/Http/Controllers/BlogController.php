@@ -36,6 +36,21 @@ class BlogController extends Controller
          return view('blogs.index',compact('blogs'));
          //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $blogs->links() !!}    
     }
+    
+    public function downloadplaca(Request $request){
+       $plates = $request->get('plate');
+
+        $sql = 'SELECT * FROM users JOIN blogs WHERE blogs.id_plate = "'.$plates.'" ';
+       
+        
+       // $blogs = Blog::where('id_plate','like',"%$plates%");
+
+       $blogs = DB::select($sql);
+        view()->share('blogs.pdf',$blogs);
+        $pdf = PDF::loadView('blogs.pdf', compact('blogs'));
+       
+        return $pdf->setPaper('a4', 'landscape')->stream('reporte-placa.pdf');
+   }
 
     public function downloadPDF(){
         
