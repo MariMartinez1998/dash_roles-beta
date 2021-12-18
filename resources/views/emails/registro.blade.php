@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Correo Electronico</h1>
-    <p>Usuario Registrado Exitosamente</p>
+    <p>Usuario Registrado Exitosamente  {{\Illuminate\Support\Facades\Auth::user()->email}} {{\Illuminate\Support\Facades\Auth::user()->password}}   </p>
     
 </body>
 </html>
