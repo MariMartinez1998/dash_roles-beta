@@ -32,11 +32,12 @@
                                         <div class="card-body">
                                             Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
                                             <ul>
-                                                <li>{{ $blog[0]->id_plate }}</li>  
-                                                <li>{{ $blog[0]->name }}</li>  
-                                                <li>{{ $blog[0]->make }}</li>                             
-                                                <li>{{ $blog[0]->created_at }}</li>
-                                                <li>{{ $blog[0]->email }}</li>
+                                                <li>Placa: {{ $blog[0]->id_plate }}</li>  
+                                                <li>Propietario: {{ $blog[0]->name  }} {{ $blog[0]->last_name  }} </li>  
+                                                <li>Marca: {{ $blog[0]->make }}</li>                             
+                                                <li>Modelo: {{ $blog[0]->model }}</li>
+                                                <li>Color: {{ $blog[0]->color }}</li>
+                                                <li>Año automovil: {{ $blog[0]->year }}</li>
                                             </ul>
                                         </div>
                                     </div>

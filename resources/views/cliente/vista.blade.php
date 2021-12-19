@@ -15,8 +15,8 @@
                                         <thead style="background-color:#6777ef">         
                                             <th style="color:#fff;"></th>                                
                                             <th style="display: none;">ID</th>
-                                            {{-- <th style="color:#fff;">Plate</th>
-                                            <th style="color:#fff;">Name</th> --}}
+                                            <th style="color:#fff;">Plate</th>
+                                            {{-- <th style="color:#fff;">Name</th> --}}
                                             <th style="color:#fff;">Make</th>
                                             <th style="color:#fff;">Title</th>
                                             {{-- <th style="color:#fff;">Description</th>  --}}
@@ -31,8 +31,8 @@
                                             <a class="btn btn-warning fa fa-eye" href="{{ route('seguimiento',["$blogs->id_servicio"]) }}"></a>
                                         </td>
                                         <td style="display: none;">{{ $blogs->id }}</td>  
-                                        {{-- <td>{{ $blogs->id_plate }}</td>  
-                                        <td>{{ $blogs->name }}</td>   --}}
+                                        <td>{{ $blogs->id_plate }}</td>  
+                                        {{--<td>{{ $blogs->name }}</td>   --}}
                                         <td>{{ $blogs->make }}</td>                             
                                         <td>{{ $blogs->titulo }}</td>
                                         {{-- <td>{{ $blogs->contenido }}</td> --}}

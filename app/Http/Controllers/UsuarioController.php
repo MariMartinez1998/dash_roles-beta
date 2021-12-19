@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //agregamos lo siguiente
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Automovil;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -38,9 +39,18 @@ class UsuarioController extends Controller
         //Con paginación
         $plate = $request->get('buscar');
 
-        $usuarios = User::where('plate','like',"%$plate%")->paginate(5);
+        // $usuarios = User::join('automovil', 'users.id', '=', 'automovil.id_user')
+        //     ->select('users.*', 'automovil.*')
+        //     ->where('automovil.plate', 'like', "%$plate%")
+        //     ->paginate(5);
+
+    $usuarios = User::where('plate','like',"%$plate%") 
+    ->join('automovil', 'users.id', '=', 'automovil.id_user')
+    ->select('users.*','automovil.plate', 'automovil.make', 'automovil.vin','automovil.model','automovil.color', 'automovil.year')
+    ->orderBy('automovil.plate')->paginate(5);
         
         //$usuarios = User::paginate(5);
+        //return $usuarios;
         return view('usuarios.index',compact('usuarios'));
         
 
@@ -90,9 +100,36 @@ class UsuarioController extends Controller
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-    
-        $user = User::create($input);
+
+        $user = new User();
+        $user->name = $input['name'];
+        $user->last_name = $input['last_name'];
+        $user->email = $input['email'];
+        $user->password = Hash::make($input['password']);
+        //$user->password = $input['confirm-password'];
+        $user->phone = $input['phone'];
+        $user->address = $input['address'];
+        $user->city = $input['city'];
+        $user->state = $input['state'];
+        $user->zip_code = $input['zip_code'];
+        $user->save();
+        //
         $user->assignRole($request->input('roles'));
+
+        $auto = new Automovil();
+        $auto->vin = $input['vin'];
+        $auto->plate = $input['plate'];
+        $auto->model = $input['model'];
+        $auto->make = $input['make'];
+        $auto->color = $input['color'];
+        $auto->year = $input['year'];
+        $auto->id_user = $user->id;
+        $auto->save();
+        // return [$auto, $user] ; 
+
+        //return $input;
+
+        //$user = User::create($input);
     
         return redirect()->route('usuarios.index');
     }
@@ -116,10 +153,12 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::join('automovil', 'users.id', '=', 'automovil.id_user')
+        ->select('users.*', 'automovil.plate', 'automovil.make', 'automovil.vin', 'automovil.model', 'automovil.color','automovil.year', 'automovil.id as id_auto')
+        ->find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
-    
+        //return $user;
         return view('usuarios.editar',compact('user','roles','userRole'));
     }
     
@@ -151,19 +190,43 @@ class UsuarioController extends Controller
             'roles' => 'required'
         ]);
     
-        $input = $request->all();
+        $input['name'] = $request->name;
+        $input['email'] = $request->email;
+        $input['phone'] = $request->phone;
+        $input['address'] = $request->address;
+        $input['city'] = $request->city;
+        $input['state'] = $request->state;
+        $input['zip_code'] = $request->zip_code;
+        $input['roles'] = $request->roles;
+
+        $autoinput['plate'] = $request->plate;
+        $autoinput['vin'] = $request->vin;
+        $autoinput['model'] = $request->model;
+        $autoinput['make'] = $request->make;
+        $autoinput['color'] = $request->color;
+        $autoinput['year'] = $request->year;
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{
             $input = Arr::except($input,array('password'));    
         }
-    
-        $user = User::find($id);
+
+        $div = explode("-", $id);
+        $user = User::find($div[0]);
+        $auto = automovil::find($div[1]);
+        
         $user->update($input);
+        $auto->update($autoinput);
+
+        // return $input;
+
+        // $user = User::find($id);
+        
+        // $user->update($input);
+        
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
         $user->assignRole($request->input('roles'));
-    
+        
         return redirect()->route('usuarios.index');
     }
 
@@ -179,3 +242,4 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 }
+
