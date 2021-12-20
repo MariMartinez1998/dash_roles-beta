@@ -175,6 +175,7 @@ class UsuarioController extends Controller
         $this->validate($request, [
             'plate' => 'required',
             'name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
             'phone' => 'required',
@@ -191,6 +192,7 @@ class UsuarioController extends Controller
         ]);
     
         $input['name'] = $request->name;
+        $input['last_name'] = $request->last_name;
         $input['email'] = $request->email;
         $input['phone'] = $request->phone;
         $input['address'] = $request->address;
@@ -219,9 +221,7 @@ class UsuarioController extends Controller
         $auto->update($autoinput);
 
         // return $input;
-
         // $user = User::find($id);
-        
         // $user->update($input);
         
         DB::table('model_has_roles')->where('model_id',$id)->delete();
