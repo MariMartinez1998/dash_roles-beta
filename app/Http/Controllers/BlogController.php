@@ -40,21 +40,21 @@ class BlogController extends Controller
     public function downloadplaca(Request $request){
        $plates = $request->get('plate');
 
-        $sql = 'SELECT * FROM users JOIN blogs WHERE blogs.id_plate = "'.$plates.'" ';
+        $sql = 'SELECT * FROM automovil a, blogs b, users u WHERE b.id_plate = "$plates%" AND a.id_user = u.id;';
        
         
        // $blogs = Blog::where('id_plate','like',"%$plates%");
 
        $blogs = DB::select($sql);
         view()->share('blogs.pdf',$blogs);
-        $pdf = PDF::loadView('blogs.pdf', compact('blogs'));
+        $pdf = PDF::loadView('blogs.pdf-plate', compact('blogs'));
        
         return $pdf->setPaper('a4', 'landscape')->stream('reporte-placa.pdf');
    }
 
     public function downloadPDF(){
         
-        $sql = 'SELECT * FROM users JOIN blogs ON blogs.id_plate = users.plate';
+        $sql = 'SELECT * FROM automovil a, blogs b, users u WHERE a.id_user=u.id AND b.id_plate = a.plate;';
        
         
         $blogs = DB::select($sql);

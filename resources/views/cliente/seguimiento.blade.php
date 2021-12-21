@@ -12,6 +12,7 @@
                 <div class="col-lg-5">
                     <img class="rounded" src="/imagen/{{ $blog[0]->image }}" height="150" alt="">
                 </div>
+                <a class="btn btn-info"href="{{ URL::previous() }}">Go Back</a>
             </div>
         </div>  
         <div class="section-body">
