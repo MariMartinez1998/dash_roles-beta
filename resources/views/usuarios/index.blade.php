@@ -90,7 +90,7 @@
                                                     </div>
                                                     <div class="grid-item">
                                                         @can('delete-user')
-                                                        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',                                                $usuario->id],'style'=>'display:inline']) !!}
+                                                        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id.'-'.$usuario->plate ,                                              $usuario->id],'style'=>'display:inline']) !!}
                                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}
                                                         @endcan
