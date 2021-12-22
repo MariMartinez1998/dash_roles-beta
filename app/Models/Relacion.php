@@ -29,7 +29,7 @@ class Relacion extends Model
     {
         return $query->select($this->table . '.id as id_usuario', $this->table . '.name', $this->table . '.last_name', $this->table . '.email', 
             $this->table . '.city', $this->table . '.state', $this->table . '.phone',
-            $this->blogs . '.*', $this->auto . '.*')
+            $this->blogs . '.*',$this->blogs . '.id as id_blogs', $this->auto . '.*')
             ->join($this->auto, $this->auto . '.id_user', '=', $this->table . '.id')
             ->join($this->blogs, $this->blogs . '.id_plate', '=', $this->auto . '.plate')
             ->where($this->table . '.id', $id)

@@ -84,7 +84,7 @@
                                                 <div class="col-lg-12">
                                                     <form action="{{route('message.store')}}" method="POST" class="border p-lg-4 mt-lg-4 rounded-lg" >
                                                         @csrf
-                                                        <input type="hidden" value="{{ $blog[0]->id }}" name="id_servicio">
+                                                        <input type="hidden" value="{{ $blog[0]->id_blogs }}" name="id_servicio">
                                                         <div class="form-group">
                                                             <label for="mensaje">Comment</label>
                                                             <textarea class="form-control" id="mensaje" name="mensaje" style="max-height: 100px;min-height: 70px;height: 70px;" rows="4"></textarea>

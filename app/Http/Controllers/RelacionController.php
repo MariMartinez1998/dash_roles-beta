@@ -27,7 +27,7 @@ class RelacionController extends Controller
     {
         $blog = Relacion::GetServiciosDetalles(auth()->user()->id, $id);
         $message = Relacion::GetMesages(auth()->user()->id, $id);
-        //return $message;
+        //return $blog;
         return view('cliente.seguimiento', compact('blog'), compact('message'));
     }
 }
