@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Automovil;
+use App\Models\Blog;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -207,6 +208,9 @@ class UsuarioController extends Controller
         $autoinput['make'] = $request->make;
         $autoinput['color'] = $request->color;
         $autoinput['year'] = $request->year;
+
+       
+        
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{
@@ -216,9 +220,19 @@ class UsuarioController extends Controller
         $div = explode("-", $id);
         $user = User::find($div[0]);
         $auto = automovil::find($div[1]);
-        
+        // $blog = Blog::select('blogs.*')->where('id_plate', $auto->plate )->get();
+        // $service = Blog::where('id_plate',$auto->plate);
+        //return $blog;
+        // $serviceinput['titulo'] = $blog->titulo;
+        // $serviceinput['contenido'] = $blog->contenido;
+        // $serviceinput['image'] = $blog->image;
+        // $serviceinput['id_plate'] = $request->plate;
+       
+
         $user->update($input);
+        // $blog->update($serviceinput);
         $auto->update($autoinput);
+        
 
         // return $input;
         // $user = User::find($id);
@@ -238,7 +252,12 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
+        $div = explode("-", $id);
+        // return $div;
+        blog::where('id_plate',$div[1])->delete();
+        automovil::where('plate',$div[1])->where('id_user',$div[0])->delete();
         User::find($id)->delete();
+        
         return redirect()->route('usuarios.index');
     }
 }

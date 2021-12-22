@@ -91,9 +91,13 @@
                                                     </div>
                                                     <div class="grid-item">
                                                         @can('delete-user')
+<<<<<<< HEAD
                                                         {!! Form::open(['method' => 'DELETE','route' =>
                                                         ['usuarios.destroy', $usuario->id],'style'=>'display:inline'])
                                                         !!}
+=======
+                                                        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id.'-'.$usuario->plate ,                                              $usuario->id],'style'=>'display:inline']) !!}
+>>>>>>> a88bad4e99e426d56360c8737916223e26880923
                                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}
                                                         @endcan
