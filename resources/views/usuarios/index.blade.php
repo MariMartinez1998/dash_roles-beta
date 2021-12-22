@@ -64,41 +64,45 @@
                                     <td>{{ $usuario->email }}</td>
                                     <td>
                                         @if(!empty($usuario->getRoleNames()))
-                                            @foreach($usuario->getRoleNames() as $rolNombre)
-                                                <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
-                                            @endforeach
+                                        @foreach($usuario->getRoleNames() as $rolNombre)
+                                        <h5><span class="badge badge-dark">{{ $rolNombre }}</span></h5>
+                                        @endforeach
                                         @endif
                                     </td>
-                                        <td>{{ $usuario->phone }}</td>
-                                        <td>{{ $usuario->address }}</td>
-                                        <td>{{ $usuario->city }}</td>
-                                        <td>{{ $usuario->state }}</td>
-                                        <td>{{ $usuario->zip_code }}</td>
-                                        <td>{{ $usuario->vin }}</td>
-                                        <td>{{ $usuario->model }}</td>
-                                        <td>{{ $usuario->make }}</td>
-                                        <td>{{ $usuario->color }}</td>
-                                        <td>{{ $usuario->year }}</td>
-                                        <td>
-                                            <div class="btn-toolbar" role="toolbar">
-                                                <div class="btn-group btn-group-justified">
+                                    <td>{{ $usuario->phone }}</td>
+                                    <td>{{ $usuario->address }}</td>
+                                    <td>{{ $usuario->city }}</td>
+                                    <td>{{ $usuario->state }}</td>
+                                    <td>{{ $usuario->zip_code }}</td>
+                                    <td>{{ $usuario->vin }}</td>
+                                    <td>{{ $usuario->model }}</td>
+                                    <td>{{ $usuario->make }}</td>
+                                    <td>{{ $usuario->color }}</td>
+                                    <td>{{ $usuario->year }}</td>
+                                    <td>
+                                        <div class="btn-toolbar" role="toolbar">
+                                            <div class="btn-group btn-group-justified">
                                                 <div class="grid-container">
                                                     <div class="grid-item">
                                                         @can('edit-user')
-                                                        <a class="btn btn-info"  href="{{ route('usuarios.edit',$usuario->id) }}">Edit</a>
+                                                        <a class="btn btn-info"
+                                                            href="{{ route('usuarios.edit',$usuario->id) }}">Edit</a>
                                                         @endcan
                                                     </div>
                                                     <div class="grid-item">
                                                         @can('delete-user')
-                                                        {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy',                                                $usuario->id],'style'=>'display:inline']) !!}
+                                                        {!! Form::open(['method' => 'DELETE','route' =>
+                                                        ['usuarios.destroy', $usuario->id],'style'=>'display:inline'])
+                                                        !!}
                                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                         {!! Form::close() !!}
                                                         @endcan
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

@@ -39,9 +39,16 @@
         @endif
         
         <!-- Main Content -->
-        <div class="main-content">
-            @yield('content')
-        </div>
+        @if(Auth::user()->id == 1)
+          <div class="main-content">
+                @yield('content')
+            </div>
+            @endif
+       
+            <div class="client">
+                @yield('client')
+            </div>
+            
         <footer class="main-footer">
             @include('layouts.footer')
         </footer>

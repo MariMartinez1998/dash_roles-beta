@@ -3427,6 +3427,7 @@ pre {
 .main-sidebar,
 .navbar,
 .main-content,
+.client,
 .main-footer {
     transition: all .5s;
 }
@@ -3587,7 +3588,7 @@ body.sidebar-mini .navbar {
     left: 65px;
 }
 
-body.sidebar-mini .main-content, body.sidebar-mini .main-footer {
+body.sidebar-mini .main-content, .client, body.sidebar-mini .main-footer {
     padding-left: 90px;
 }
 
@@ -3608,7 +3609,7 @@ body.layout-2 .main-wrapper {
 }
 
 body.layout-2 .main-sidebar,
-body.layout-2 .main-content,
+body.layout-2 .main-content, .client,
 body.layout-2 .main-footer {
     flex-shrink: 0;
     flex-grow: 0;
@@ -3800,7 +3801,7 @@ body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item .dropdown-menu .n
     color: #fff;
 }
 
-body.layout-3 .main-content {
+body.layout-3 .main-content .client {
     padding-left: 0;
     padding-right: 0;
     padding-top: 170px;
@@ -3977,6 +3978,13 @@ body.layout-3 .main-footer {
     width: 100%;
     position: relative;
 }
+.client{
+    padding-left: 80px;
+    padding-right: 30px;
+    padding-top: 80px;
+    width: 100%;
+    position: relative;
+}
 
 .main-footer {
     padding: 20px 30px 20px 280px;
@@ -4064,6 +4072,12 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     }
 
     .main-content {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: 100% !important;
+    }
+
+    .client{
         padding-left: 30px;
         padding-right: 30px;
         width: 100% !important;

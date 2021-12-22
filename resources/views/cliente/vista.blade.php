@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
+@section('client')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Vista Cliente</h3>
+            <h3 class="page__heading">Look at your services {{\Illuminate\Support\Facades\Auth::user()->name}}!</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -13,7 +13,7 @@
                             <div class="table-responsive">
                                 <table class="table table-striped mt-2">
                                         <thead style="background-color:#6777ef">         
-                                            <th style="color:#fff;"></th>                                
+                                            <th style="color:#fff;">See more</th>                                
                                             <th style="display: none;">ID</th>
                                             <th style="color:#fff;">Plate</th>
                                             {{-- <th style="color:#fff;">Name</th> --}}

@@ -77,16 +77,20 @@
                                         <div class="btn-toolbar" role="toolbar">
                                             <div class="btn-group btn-group-justified">
                                                 <form action="{{ route('blogs.destroy',$blog->id) }}" method="POST">
-                                                    @can('edit-service')
-                                                    <a class="btn btn-info"
-                                                        href="{{ route('blogs.edit',$blog->id) }}">Edit</a>
-                                                    @endcan
-
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    @can('delete-service')
-                                                    <button type="submit" class="btn btn-danger ">Delete</button>
-                                                    @endcan
+                                                <div class="grid-container">
+                                                    <div class="grid-item">   
+                                                        @can('edit-service')
+                                                        <a class="btn btn-info"
+                                                            href="{{ route('blogs.edit',$blog->id) }}">Edit</a>
+                                                        @endcan
+                                                    </div>
+                                                    <div class="grid-item">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        @can('delete-service')
+                                                        <button type="submit" class="btn btn-danger ">Delete</button>
+                                                        @endcan
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
