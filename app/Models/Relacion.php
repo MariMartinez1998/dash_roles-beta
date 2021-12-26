@@ -45,6 +45,7 @@ class Relacion extends Model
             ->join($this->message, $this->message . '.id', '=', $this->mess_user_serv . '.id_message')
             ->where($this->table . '.id', $id)
             ->where($this->blogs . '.id', $idservicio)
+            ->orderBy($this->message. '.created_at', 'desc')
             ->get();
     }
 }

@@ -61,7 +61,7 @@ Route::get('registro', function () {
     return "mensaje enviado";
 });
 
-use App\Models\User;
+// use App\Models\User;
 Route::get('/notificacion', function () {
     $correo = new WelcomeNewsletter;
     Mail::to('mayojose321@gmail.com')->send($correo);

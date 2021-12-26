@@ -57,6 +57,18 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-lg-12">
+                                                    <form action="{{route('message.store')}}" method="POST" class="border p-lg-4 mb-lg-4 rounded-lg" >
+                                                        @csrf
+                                                        <input type="hidden" value="{{ $blog[0]->id_blogs }}" name="id_servicio">
+                                                        <div class="form-group">
+                                                            <label for="mensaje">Comment</label>
+                                                            <textarea class="form-control" id="mensaje" name="mensaje" style="max-height: 100px;min-height: 70px;height: 70px;" rows="4"></textarea>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary">Send</button>
+                                                    </form>
+                                                </div>
+                                                <hr>
+                                                <div class="col-lg-12">
                                                     <div class="list-group">
                                                         @foreach ($message as $messages)
                                                             <a href="#" class="list-group-item list-group-item-action">
@@ -79,18 +91,6 @@
                                                             </a>
                                                         @endif
                                                     </div>
-                                                </div>
-                                                <hr>
-                                                <div class="col-lg-12">
-                                                    <form action="{{route('message.store')}}" method="POST" class="border p-lg-4 mt-lg-4 rounded-lg" >
-                                                        @csrf
-                                                        <input type="hidden" value="{{ $blog[0]->id_blogs }}" name="id_servicio">
-                                                        <div class="form-group">
-                                                            <label for="mensaje">Comment</label>
-                                                            <textarea class="form-control" id="mensaje" name="mensaje" style="max-height: 100px;min-height: 70px;height: 70px;" rows="4"></textarea>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary">Send</button>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
