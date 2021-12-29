@@ -2,12 +2,13 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class Resgistro extends Notification
+class RegistroNotificaction extends Notification
 {
     use Queueable;
 
@@ -16,9 +17,9 @@ class Resgistro extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -29,7 +30,7 @@ class Resgistro extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -55,7 +56,15 @@ class Resgistro extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'name' => $this->user->name,
+            'last_name' => $this->user->last_name,
+            'email' => $this->user->email,
+            'phone' => $this->user->phone,
+            'address' => $this->user->address,
+            'city' => $this->user->city,
+            'state' => $this->user->state,
+            'zip_code' => $this->user->zip_code,
+            'id' => $this->user->id
         ];
     }
 }

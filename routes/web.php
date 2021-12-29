@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('blogs', BlogController::class);
     Route::resource('cliente', RelacionController::class);
     Route::get('cliente/{id}', [RelacionController::class, 'show'])->name('seguimiento');
-    Route::post('menssage/store', [MessageController::class, 'store'])->name('message.store');
+    Route::post('menssage/store', [MessageController::class, 'store'])->name('message-store');
     Route::get('download-pdf', [BlogController::class, 'downloadPDF'])->name('download-pdf');
     Route::get('download-placa', [BlogController::class, 'downloadplaca'])->name('download-placa');
     //Route::name('print')->get('/imprimir', 'Controller@imprimir');
@@ -62,7 +62,7 @@ Route::get('registro', function () {
 });
 
 // use App\Models\User;
-Route::get('/notificacion', function () {
+Route::get('notificacion', function () {
     $correo = new WelcomeNewsletter;
     Mail::to('mayojose321@gmail.com')->send($correo);
     return "mensaje enviado";

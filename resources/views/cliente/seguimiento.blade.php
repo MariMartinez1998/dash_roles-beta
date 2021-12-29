@@ -57,7 +57,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <form action="{{route('message.store')}}" method="POST" class="border p-lg-4 mb-lg-4 rounded-lg" >
+                                                    <form action="{{ route('message-store') }}" method="POST" enctype="multipart/form-data" class="border p-lg-4 mb-lg-4 rounded-lg" >
                                                         @csrf
                                                         <input type="hidden" value="{{ $blog[0]->id_blogs }}" name="id_servicio">
                                                         <div class="form-group">

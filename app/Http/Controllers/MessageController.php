@@ -14,8 +14,8 @@ class MessageController extends Controller
     //
     public function index()
     {
-        // $blog = Relacion::GetListaservicios(auth()->user()->id);
-        // return view('cliente.vista', compact('blog'));
+        $blog = Relacion::GetListaservicios(auth()->user()->id);
+        return view('cliente.vista', compact('blog'));
     }
 
     public function store(Request $request)
@@ -33,8 +33,14 @@ class MessageController extends Controller
         $MessageUserServicio->id_user = auth()->user()->id;
         $MessageUserServicio->save();
 
-        $blog = Relacion::GetListaservicios(auth()->user()->id);
-        return view('cliente.vista', compact('blog'));
+        $user = User::find(auth()->user()->id);
+
+        Message::createNotification($Message, $user);
+
+        // $blog = Relacion::GetListaservicios(auth()->user()->id);
+        // return view('cliente.vista', compact('blog'))->render();
+        return redirect()->route('seguimiento', $request->id_servicio);
+        
     }
 
     public function show()

@@ -2,12 +2,15 @@
 
 namespace App\Notifications;
 
+use App\Models\Message;
+use App\Models\MessageUserServicio;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class InvoicePaid extends Notification
+class MessageNotificaction extends Notification
 {
     use Queueable;
 
@@ -16,9 +19,10 @@ class InvoicePaid extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Message $msg, User $user)
     {
-        
+        $this->msg = $msg;
+        $this->user = $user;
     }
 
     /**
@@ -29,7 +33,7 @@ class InvoicePaid extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -56,6 +60,11 @@ class InvoicePaid extends Notification
     {
         return [
             //
+            'name' => $this->user->name ,
+            'last_name' => $this->user->last_name,
+            'id_user' => $this->user->id ,
+            'created_at' => $this->msg->created_at ,
+            'mensaje' => $this->msg->mensaje 
         ];
     }
 }
