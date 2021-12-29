@@ -31,6 +31,7 @@ class profilleController extends Controller
         $request->validate([
             'pfCurrentPassword'=>'required|min:6|max:100',
              'pfNewPassword'=>'required|min:6|max:100',
+             'pfNewConfirmPassword'=>'required|same:pfNewPassword'
          ]);
          $user =  auth()->user();
           $user->password = bcrypt($request->get('pfNewPassword'));
