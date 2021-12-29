@@ -52,8 +52,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('menssage/store', [MessageController::class, 'store'])->name('message.store');
     Route::get('download-pdf', [BlogController::class, 'downloadPDF'])->name('download-pdf');
     Route::get('download-placa', [BlogController::class, 'downloadplaca'])->name('download-placa');
-    Route::get('/profile/change-password',[profilleController::class, 'change_password'])->name('change_password');
-    Route::post('/profile/update-password', [profilleController::class, 'update_password'])->name('update_password');
+    Route::get('/changepassword',[profilleController::class, 'changepasswordForm'])->name('changepassword');
+    Route::post('/changepassword', [profilleController::class, 'changepassword'])->name('changepassword');
     //Route::name('print')->get('/imprimir', 'Controller@imprimir');
 });
 

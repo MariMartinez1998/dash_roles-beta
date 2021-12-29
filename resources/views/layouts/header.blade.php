@@ -38,7 +38,7 @@
 
 
             <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal"
-                href="{{ route('change_password')}}" data-id="{{ \Auth::id() }}"><i class="fa fa-lock"> </i>Change
+                href="{{ route('changepassword')}}" data-id="{{ \Auth::id() }}"><i class="fa fa-lock"> </i>Change
                 Password</a>
 
             <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
