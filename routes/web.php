@@ -11,6 +11,7 @@ use App\Http\Controllers\RelacionController;
 use App\Http\Controllers\MessageController;
 
 use App\Http\Controllers\pdfController;
+use App\Http\Controllers\profilleController;
 
 use App\mail\WelcomeNewsletter;
 use Illuminate\Support\Facades\Mail;
@@ -51,6 +52,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('menssage/store', [MessageController::class, 'store'])->name('message.store');
     Route::get('download-pdf', [BlogController::class, 'downloadPDF'])->name('download-pdf');
     Route::get('download-placa', [BlogController::class, 'downloadplaca'])->name('download-placa');
+    Route::get('/profile/change-password',[profilleController::class, 'change_password'])->name('change_password');
+    Route::post('/profile/update-password', [profilleController::class, 'update_password'])->name('update_password');
     //Route::name('print')->get('/imprimir', 'Controller@imprimir');
 });
 
