@@ -45,20 +45,17 @@ class UsuarioController extends Controller
         //     ->where('automovil.plate', 'like', "%$plate%")
         //     ->paginate(5);
 
-    $usuarios = User::where('plate','like',"%$plate%") 
-    ->join('automovil', 'users.id', '=', 'automovil.id_user')
-    ->select('users.*','automovil.plate', 'automovil.make', 'automovil.vin','automovil.model','automovil.color', 'automovil.year')
-    ->orderBy('automovil.plate')->paginate(5);
-        
+        $usuarios = User::where('plate','like',"%$plate%") 
+        ->join('automovil', 'users.id', '=', 'automovil.id_user')
+        ->select('users.*','automovil.plate', 'automovil.make', 'automovil.vin','automovil.model','automovil.color', 'automovil.year')
+        ->orderBy('users.id')->paginate(5);
+
         //$usuarios = User::paginate(5);
         //return $usuarios;
         return view('usuarios.index',compact('usuarios'));
-        
-
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
 
- 
     /**
      * Show the form for creating a new resource.
      *
@@ -115,6 +112,7 @@ class UsuarioController extends Controller
         $user->zip_code = $input['zip_code'];
         $user->save();
         //
+        
         $user->assignRole($request->input('roles'));
 
         $auto = new Automovil();
@@ -129,7 +127,7 @@ class UsuarioController extends Controller
         // return [$auto, $user] ; 
 
         //return $input;
-
+        User::createNotification($user);
         //$user = User::create($input);
     
         return redirect()->route('usuarios.index');

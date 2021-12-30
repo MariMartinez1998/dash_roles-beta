@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Mail\WelcomeNewsletter;
 
 use App\Notifications\InvoicePaid;
+use App\Notifications\RegistroNotificaction;
 //Agregamos spatie
 use Spatie\Permission\Traits\HasRoles;
 
@@ -24,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'plate',
+        
         'name',
         'last_name',
         'email',
@@ -34,11 +35,12 @@ class User extends Authenticatable
         'city',
         'state',
         'zip_code',
-        'vin',
-        'model',
-        'make',
-        'color',
-        'year'
+        // 'vin',
+        // 'plate',
+        // 'model',
+        // 'make',
+        // 'color',
+        // 'year'
     ];
 
     /**
@@ -66,5 +68,12 @@ class User extends Authenticatable
         return $this->hasMany(blogs::class, 'id_plate', 'plate');
     }
 
-    
+    public function createNotification($usuario){
+        
+        User::role(['Super Admin'])
+        // ->except($user->id)
+        ->each(function(User $user) use ($usuario){
+            $user->notify(new RegistroNotificaction($usuario));
+        });
+    }
 }

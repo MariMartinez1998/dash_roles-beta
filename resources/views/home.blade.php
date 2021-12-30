@@ -20,7 +20,7 @@
                                             <h5>Users</h5>                                               
                                                 @php
                                                  use App\Models\User;
-                                                $cant_usuarios = User::count();                                                
+                                                $cant_usuarios = User::select('count(*) as count')->join('automovil', 'users.id', '=', 'automovil.id_user')->count();                                                
                                                 @endphp
                                                 <h2 class="text-right"><i class="fa fa-users f-left"></i><span>{{$cant_usuarios}}</span></h2>
                                                 <p class="m-b-0 text-right"><a href="/usuarios" class="text-white">See more</a></p>
