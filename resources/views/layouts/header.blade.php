@@ -12,7 +12,8 @@
 
     <li class="dropdown">
         <a class="fa fa-bell nav-link nav-link-lg nav-link-user  " href="#" data-toggle="dropdown">
-            <span class="badge">Aqui el #Notifications</span>
+            <span class="badge badge-danger" style="">{{auth()->user()->unreadNotifications->count()}}</span>
+            {{-- <span class="badge text-danger">{{auth()->user()->unreadNotifications->count()}}</span> --}}
         </a>
 
         <div class="dropdown-menu dropdown-menu-right">
