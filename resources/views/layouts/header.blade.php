@@ -17,8 +17,20 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-right">
-            <div class="dropdown-title">
-                Aqui viene lo tuyo :v</div>
+            <div class="dropdown-title">Notificacion</div>
+            @foreach (auth()->user()->unreadNotifications as $notification)
+                <a class="dropdown-item" href="#">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{$notification->created_at}}</h6>
+                            <p class="card-text">
+                                {{$notification->data['name'].' '.$notification->data['last_name']}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
     </li>
     @endif
