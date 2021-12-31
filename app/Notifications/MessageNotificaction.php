@@ -64,7 +64,10 @@ class MessageNotificaction extends Notification
             'last_name' => $this->user->last_name,
             'id_user' => $this->user->id ,
             'created_at' => $this->msg->created_at ,
-            'mensaje' => $this->msg->mensaje 
+            'mensaje' => $this->msg->mensaje,
+            'ruta' => '',
+            'accion' => 'Comentario',
+            'color' => 'primary' //primary  secondary success danger info warning 
         ];
     }
 }

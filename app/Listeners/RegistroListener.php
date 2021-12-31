@@ -30,7 +30,7 @@ class RegistroListener
     {
         User::role(['Super Admin'])
         ->each(function (User $user) use ($event) {
-            Notification::send($user, new RegistroNotificaction($event->user));
+            Notification::send($user, new RegistroNotificaction($event->user,$event->auto));
         });
     }
 }

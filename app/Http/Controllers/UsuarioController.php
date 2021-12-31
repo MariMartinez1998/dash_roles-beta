@@ -127,7 +127,7 @@ class UsuarioController extends Controller
         // return [$auto, $user] ; 
 
         //return $input;
-        User::createNotification($user);
+        User::createNotification($user, $auto );
         //$user = User::create($input);
     
         return redirect()->route('usuarios.index');

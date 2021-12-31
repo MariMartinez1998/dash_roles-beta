@@ -69,9 +69,9 @@ class User extends Authenticatable
         return $this->hasMany(blogs::class, 'id_plate', 'plate');
     }
 
-    public function createNotification($usuario){
+    public function createNotification($usuario, $auto){
 
-        event(new RegistroEvent($usuario));
+        event(new RegistroEvent($usuario, $auto));
         
         // User::role(['Super Admin'])
         // // ->except($user->id)

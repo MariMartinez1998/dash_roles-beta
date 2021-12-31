@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Automovil;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,9 +18,10 @@ class RegistroNotificaction extends Notification
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Automovil $auto)
     {
         $this->user = $user;
+        $this->auto = $auto;
     }
 
     /**
@@ -59,12 +61,15 @@ class RegistroNotificaction extends Notification
             'name' => $this->user->name,
             'last_name' => $this->user->last_name,
             'email' => $this->user->email,
-            'phone' => $this->user->phone,
-            'address' => $this->user->address,
             'city' => $this->user->city,
-            'state' => $this->user->state,
-            'zip_code' => $this->user->zip_code,
-            'id' => $this->user->id
+            'Placa' =>  $this->auto->plate,
+            'Marca' => $this->auto->make,
+            'Modelo' => $this->auto->model,
+            'id' => auth()->user()->name.' '. auth()->user()->last_name,
+            'id' => $this->user->id,
+            'ruta' => 'usuarios',
+            'accion' => 'Registro',
+            'color' => 'primary' //primary  secondary success danger info warning 
         ];
     }
 }

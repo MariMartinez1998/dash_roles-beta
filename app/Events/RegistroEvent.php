@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Automovil;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -14,6 +15,7 @@ use Illuminate\Queue\SerializesModels;
 class RegistroEvent
 {
     public $user;
+    public $auto;
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -21,9 +23,10 @@ class RegistroEvent
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user,Automovil $auto)
     {
         $this->user = $user;
+        $this->auto = $auto;
     }
 
     /**

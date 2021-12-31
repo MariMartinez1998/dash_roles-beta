@@ -16,20 +16,26 @@
             {{-- <span class="badge text-danger">{{auth()->user()->unreadNotifications->count()}}</span> --}}
         </a>
 
-        <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
             <div class="dropdown-title">Notificacion</div>
-            @foreach (auth()->user()->unreadNotifications as $notification)
-                <a class="dropdown-item" href="#">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">{{$notification->created_at}}</h6>
-                            <p class="card-text">
-                                {{$notification->data['name'].' '.$notification->data['last_name']}}
-                            </p>
-                        </div>
+            @if (auth()->user()->unreadNotifications->count() == 0)
+                <div class="card border-primary dropdown-item" style="width: 97.5%; padding: 0px;margin: 0px 5px; margin-bottom: 5px;">
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">Esperando una accion</h5>
+                        <h6 class="card-subtitle mb-2 text-muted h6" style="font-size: 14px;">"2021-12-30 07:36 PM"</h6>
+                        <p class="card-text h6" style="white-space: pre-line;font-size: 14px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
-                </a>
+                </div>
+            @endif
+            @foreach (auth()->user()->unreadNotifications as $notification)
+                {{-- <a class="dropdown-item" href="#"></a> --}}
+                <div class="card border-primary dropdown-item" style="width: 97.5%; padding: 0px;margin: 0px 5px; margin-bottom: 5px;">
+                    <div class="card-body text-primary">
+                        <h5 class="card-title">Esperando una accion 2</h5>
+                        <h6 class="card-subtitle mb-2 text-muted h6" style="font-size: 14px;">"2021-12-30 07:36 PM"</h6>
+                        <p class="card-text h6" style="white-space: pre-line;font-size: 14px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
             @endforeach
         </div>
     </li>
