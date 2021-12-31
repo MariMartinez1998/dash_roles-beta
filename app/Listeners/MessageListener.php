@@ -27,10 +27,15 @@ class MessageListener
      * @return void
      */
     public function handle($event)
-    {    
+    {
+        // User::role(['Super Admin'])
+        // ->each(function (User $user) use ($event) {
+        //     Notification::send($user, new MessageNotificaction($event->message,$event->user));
+        // });
         User::role(['Super Admin'])
+        // ->except($user->id) //esta no incluirla
         ->each(function (User $user) use ($event) {
-            Notification::send($user, new MessageNotificaction($event->message,$event->user));
+            Notification::send($user, new MessageNotificaction($event->message, $event->user));
         });
     }
 }

@@ -32,7 +32,7 @@ class RegistroNotificaction extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail','database'];
     }
 
     /**
@@ -69,7 +69,7 @@ class RegistroNotificaction extends Notification
             'id' => $this->user->id,
             'ruta' => 'usuarios',
             'accion' => 'Registro',
-            'color' => 'primary' //primary  secondary success danger info warning 
+            'color' => 'secondary' //primary  secondary success danger info warning 
         ];
     }
 }

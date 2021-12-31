@@ -19,9 +19,9 @@ class MessageNotificaction extends Notification
      *
      * @return void
      */
-    public function __construct(Message $msg, User $user)
+    public function __construct(Message $message, User $user)
     {
-        $this->msg = $msg;
+        $this->message = $message;
         $this->user = $user;
     }
 
@@ -33,7 +33,7 @@ class MessageNotificaction extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -59,13 +59,12 @@ class MessageNotificaction extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
             'name' => $this->user->name ,
             'last_name' => $this->user->last_name,
             'id_user' => $this->user->id ,
-            'created_at' => $this->msg->created_at ,
-            'mensaje' => $this->msg->mensaje,
-            'ruta' => '',
+            'created_at' => $this->message->created_at ,
+            'mensaje' => $this->message->mensaje,
+            'ruta' => 'aaaa'. $this->user->id ,
             'accion' => 'Comentario',
             'color' => 'primary' //primary  secondary success danger info warning 
         ];

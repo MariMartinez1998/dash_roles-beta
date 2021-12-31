@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 
 class MessageEvent
 {
-    public $msg;
+    public $message;
     public $user;
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -23,9 +23,9 @@ class MessageEvent
      *
      * @return void
      */
-    public function __construct(Message $msg, User $user)
+    public function __construct(Message $message, User $user)
     {
-        $this->msg = $msg;
+        $this->message = $message;
         $this->user = $user;
     }
 

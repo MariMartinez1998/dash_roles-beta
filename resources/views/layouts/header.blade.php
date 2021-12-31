@@ -29,11 +29,13 @@
             @endif
             @foreach (auth()->user()->unreadNotifications as $notification)
                 {{-- <a class="dropdown-item" href="#"></a> --}}
-                <div class="card border-primary dropdown-item" style="width: 97.5%; padding: 0px;margin: 0px 5px; margin-bottom: 5px;">
-                    <div class="card-body text-primary">
-                        <h5 class="card-title">Esperando una accion 2</h5>
-                        <h6 class="card-subtitle mb-2 text-muted h6" style="font-size: 14px;">"2021-12-30 07:36 PM"</h6>
-                        <p class="card-text h6" style="white-space: pre-line;font-size: 14px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="card border-{{$notification->data['color']}} dropdown-item" style="width: 97.5%; padding: 0px;margin: 0px 5px; margin-bottom: 5px;">
+                    <div class="card-body text-{{$notification->data['color']}}">
+                        <h5 class="card-title"> {{$notification->data['accion']}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted h6" style="font-size: 14px;">" {{$notification->created_at}}"</h6>
+                        <p class="card-text h6" style="white-space: pre-line;font-size: 14px;">
+                            El Usuario {{$notification->data['name']}} {{$notification->data['last_name']}} @if ( $notification->data['accion'] == 'Comentario') creo un {{$notification->data['accion']}}. @else se {{$notification->data['accion']}} en el sistema. @endif
+                        </p>
                     </div>
                 </div>
             @endforeach
