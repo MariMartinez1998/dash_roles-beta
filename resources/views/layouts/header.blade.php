@@ -28,7 +28,7 @@
                 </div>
             @endif
             @foreach (auth()->user()->unreadNotifications as $notification)
-                {{-- <a class="dropdown-item" href="#"></a> --}}
+                <!-- {{-- <a class="dropdown-item" href="#"></a> --}} -->
                 <div class="card border-{{$notification->data['color']}} dropdown-item" style="width: 97.5%; padding: 0px;margin: 0px 5px; margin-bottom: 5px;">
                     <div class="card-body text-{{$notification->data['color']}}">
                         <h5 class="card-title"> {{$notification->data['accion']}}</h5>
