@@ -25,9 +25,9 @@ class profilleController extends Controller
             'password' => 'same:confirm-password'
         ]);      
         
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }
+        // if(!empty($input['password'])){ 
+        //     $input['password'] = Hash::make($input['password']);
+        // }
  
         if(!(Hash::check($request->get('pfCurrentPassword'),  auth()->user()->password))) { 
             return back()->with('error', 'Your current password does not match with what you provided');

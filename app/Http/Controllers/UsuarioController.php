@@ -48,7 +48,7 @@ class UsuarioController extends Controller
         $usuarios = User::where('plate','like',"%$plate%") 
         ->join('automovil', 'users.id', '=', 'automovil.id_user')
         ->select('users.*','automovil.plate', 'automovil.make', 'automovil.vin','automovil.model','automovil.color', 'automovil.year')
-        ->orderBy('users.id')->paginate(5);
+        ->orderBy('users.id')->paginate(7);
 
         //$usuarios = User::paginate(5);
         //return $usuarios;
