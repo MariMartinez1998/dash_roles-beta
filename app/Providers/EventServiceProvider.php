@@ -6,6 +6,8 @@ use App\Events\RegistroEvent;
 use App\Listeners\RegistroListener;
 use App\Events\MessageEvent;
 use App\Listeners\MessageListener;
+use App\Events\MailRegistroUsuerEvent;
+use App\Listeners\MailRegistroUsuerListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         MessageEvent::class => [
             MessageListener::class,
+        ],
+        MailRegistroUsuerEvent::class => [
+            MailRegistroUsuerListener::class,
         ]
     ];
 

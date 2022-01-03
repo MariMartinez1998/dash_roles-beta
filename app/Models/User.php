@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\MailRegistroUsuerEvent;
 use App\Events\RegistroEvent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -72,7 +73,7 @@ class User extends Authenticatable
     public function createNotification($usuario, $auto){
 
         event(new RegistroEvent($usuario, $auto));
-        
+        event(new MailRegistroUsuerEvent($usuario, $auto));
         // User::role(['Super Admin'])
         // // ->except($user->id)
         // ->each(function(User $user) use ($usuario){
