@@ -44,11 +44,10 @@ class RegistroNotificaction extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('¡Nuevo Usuario!')
-                    ->line('Se registro el usuario')
+                    ->line('¡New user!')
+                    ->line('User registered')
                     ->line($this->user->name.' '.$this->user->last_name)
-                    ->action('Mas informacion aqui', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->action('More information here', url('/'));
     }
 
     /**

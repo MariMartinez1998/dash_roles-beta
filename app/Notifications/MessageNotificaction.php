@@ -45,11 +45,11 @@ class MessageNotificaction extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('¡El registro en nuestra plataforma fue exitoso')
-                    ->line('El correo para que accedas es'. ' '. $this->user->email)
-                    ->line('y la contraseña'. ' '. $this->user->password)
-                    ->action('Aqui puedes ingresar', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('¡New comment!')
+                    ->line($this->user->name .' '.$this->user->last_name .' '. 'made this comment')
+                    ->line($this->message->mensaje )
+                    ->line('The'.' '. $this->message->created_at )
+                    ->action('Here you can enter', url('/'));
     }
 
     /**
@@ -64,7 +64,6 @@ class MessageNotificaction extends Notification
             'name' => $this->user->name ,
             'last_name' => $this->user->last_name,
             'email' => $this->user->email,
-            'password' => $this->user->password,
             'id_user' => $this->user->id ,
             'created_at' => $this->message->created_at ,
             'mensaje' => $this->message->mensaje,
