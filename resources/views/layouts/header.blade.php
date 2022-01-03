@@ -16,7 +16,7 @@
             {{-- <span class="badge text-danger">{{auth()->user()->unreadNotifications->count()}}</span> --}}
         </a>
 
-        <div class="dropdown-menu dropdown-menu-right" style="width: 400px;">
+        <div class="dropdown-menu dropdown-menu-right" style="width: 400px;overflow: auto;height: 70vh;">
             <div class="dropdown-title">Notificacion</div>
             @if (auth()->user()->unreadNotifications->count() == 0)
                 <div class="card border-primary dropdown-item" style="width: 97.5%; padding: 0px;margin: 0px 5px; margin-bottom: 5px;">
