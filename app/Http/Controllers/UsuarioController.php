@@ -48,7 +48,7 @@ class UsuarioController extends Controller
         $usuarios = User::where('plate','like',"%$plate%") 
         ->join('automovil', 'users.id', '=', 'automovil.id_user')
         ->select('users.*','automovil.plate', 'automovil.make', 'automovil.vin','automovil.model','automovil.color', 'automovil.year')
-        ->orderBy('users.id')->paginate(7);
+        ->orderBy('users.id')->paginate(5);
 
         //$usuarios = User::paginate(5);
         //return $usuarios;
@@ -103,7 +103,7 @@ class UsuarioController extends Controller
         $user->name = $input['name'];
         $user->last_name = $input['last_name'];
         $user->email = $input['email'];
-        $user->password = Hash::make($input['password']);
+        $user->password = $input['password'];
         //$user->password = $input['confirm-password'];
         $user->phone = $input['phone'];
         $user->address = $input['address'];
