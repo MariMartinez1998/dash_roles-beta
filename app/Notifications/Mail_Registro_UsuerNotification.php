@@ -44,12 +44,12 @@ class Mail_Registro_UsuerNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->line('Estos son tus datos registrados en nuestra plataforma')
                     ->line($this->user->name . ' ' . $this->user->last_name)
                     ->line('email: '.$this->user->email)
                     ->line('Plate: ' . $this->auto->plate)
                     // ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you for using our plataform!');
     }
 
     /**
