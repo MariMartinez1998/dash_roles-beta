@@ -34,7 +34,7 @@
                         <h5 class="card-title"> {{$notification->data['accion']}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted h6" style="font-size: 14px;">" {{$notification->created_at}}"</h6>
                         <p class="card-text h6" style="white-space: pre-line;font-size: 14px;">
-                            El Usuario {{$notification->data['name']}} {{$notification->data['last_name']}} @if ( $notification->data['accion'] == 'Comentario') creo un {{$notification->data['accion']}}. @else se {{$notification->data['accion']}} en el sistema. @endif
+                            El Usuario {{$notification->data['name']}} {{$notification->data['last_name']}} @if ( $notification->data['accion'] == 'Comentario') creo este {{$notification->data['accion']}}:   {{$notification->data['mensaje']}}. @else se {{$notification->data['accion']}} en el sistema. @endif
                         </p>
                     </div>
                 </div>
