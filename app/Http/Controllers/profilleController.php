@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class profilleController extends Controller
 {
@@ -20,35 +21,24 @@ class profilleController extends Controller
     }
 
     public function changepassword(Request $request){
+
+        $user = User::find(auth()->user()->id);
+
         $this->validate($request, [
-            
-            'password' => 'same:confirm-password'
-        ]);      
-        
-        // if(!empty($input['password'])){ 
-        //     $input['password'] = Hash::make($input['password']);
-        // }
- 
-        if(!(Hash::check($request->get('pfCurrentPassword'),  auth()->user()->password))) { 
-            return back()->with('error', 'Your current password does not match with what you provided');
+            'password' => 'same:password_confirmation'
+        ]);
+        $input = $request->all();
+        $input['email'] = $user['email'];
+        //return $input;
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
         }
 
-        if(strcmp($request->get('pfCurrentPassword'), $request->get('pfNewPassword')) == 0) {
-            return back()->with('error', 'Your current password cannot be same with the new password');
-        } 
-        $request->validate([
-            'pfCurrentPassword'=>'required|min:6|max:100',
-             'pfNewPassword'=>'required|min:6|max:100',
-             'pfNewConfirmPassword'=>'required|same:pfNewPassword'
-         ]);
-
-         $user = User::find($div[0]);
-  
-        
-         $user =  auth()->user();
-          $user->password = bcrypt($request->get('pfNewPassword'));
-          $user->update($input);
-           return back()->with('message', 'Password changed successfully');
+        if(Auth::attempt(['email' => $input['email'], 'password' => $input['password_current']])){
+            User::find(auth()->user()->id)->update(['password' => $input['password']]);
+            return 'autenticacion correcta';
         }
+        return 'no se pudo autenticar';
+    }
 
 }

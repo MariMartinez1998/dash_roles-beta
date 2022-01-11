@@ -74,10 +74,5 @@ class User extends Authenticatable
 
         event(new RegistroEvent($usuario, $auto));
         event(new MailRegistroUsuerEvent($usuario, $auto));
-        // User::role(['Super Admin'])
-        // // ->except($user->id)
-        // ->each(function(User $user) use ($usuario){
-        //     $user->notify(new RegistroNotificaction($usuario));
-        // });
     }
 }
