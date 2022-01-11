@@ -17,12 +17,6 @@
                         </ul>
                     </div>
                     @endif
-                    @if (session('error'))
-                    <div class="alert alert-danger" role="alert">
-                        <a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a>
-                        {{ session('error')}}
-                    </div>
-                    @endif
                 
                     {{csrf_field()}}
                     <div class="row">

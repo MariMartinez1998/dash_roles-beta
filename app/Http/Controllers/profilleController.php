@@ -36,9 +36,9 @@ class profilleController extends Controller
 
         if(Auth::attempt(['email' => $input['email'], 'password' => $input['password_current']])){
             User::find(auth()->user()->id)->update(['password' => $input['password']]);
-            return 'autenticacion correcta';
+            return back()->with('success','Password edited successfully');
         }
-        return 'no se pudo autenticar';
+        return back()->with('error','Failed to change password');
     }
 
 }
