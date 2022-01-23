@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Models;
-
+use App\Events\MailBlogRegistroEvent;
+use App\Notifications\Mail_Blog_RegistroNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Blog extends Model
 {
