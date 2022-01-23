@@ -2,14 +2,14 @@
 
 namespace App\Notifications;
 
-use App\Models\Automovil;
-use App\Models\User;
 use Illuminate\Bus\Queueable;
+use App\Models\User;
+use App\Models\Blog;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class Mail_Registro_UsuerNotification extends Notification
+class Mail_Blog_RegistroNotification extends Notification
 {
     use Queueable;
 
@@ -18,10 +18,10 @@ class Mail_Registro_UsuerNotification extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, Automovil $auto)
+    public function __construct(User $user,Blog $producto)
     {
         $this->user = $user;
-        $this->auto = $auto;
+        $this->producto = $producto;
     }
 
     /**
@@ -45,13 +45,10 @@ class Mail_Registro_UsuerNotification extends Notification
     {
         return (new MailMessage)
                     ->line('These are your data registered on our platform')
-                    ->line($this->user->name . ' ' . $this->user->last_name)
-                    ->line('email: '.$this->user->email)
-                    ->line('Plate: ' . $this->auto->plate)
-                    ->line('Make: ' . $this->auto->make)
-                    ->line('Model: ' . $this->auto->model)
-                
-                     ->action('Notification Action', url('/'))
+                    ->line('plate: '.$this->producto->id_plate)
+                    ->line('title: '.$this->producto->titulo)
+                    ->line('description: '.$this->producto->contenido)
+                    ->action('Notification Action', url('/'))
                     ->line('Thank you for using our platform!');
     }
 

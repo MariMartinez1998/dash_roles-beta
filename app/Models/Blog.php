@@ -20,4 +20,10 @@ class Blog extends Model
     		return $query->where('id_plate','like',"%$plate%");
     	}
     }
+
+    public function createNotificationBlog($usuario,$producto){
+        
+        event(new MailBlogRegistroEvent($usuario,$producto));
+        
+    }
 }

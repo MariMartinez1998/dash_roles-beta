@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Blog;
+
 use Barryvdh\DomPDF\Facade as PDF;
 
 use Illuminate\Support\Facades\DB;
@@ -95,7 +96,7 @@ class BlogController extends Controller
             $imagen->move($rutaGuardarImagen, $imgServ);
             $producto['image'] = "$imgServ";
         }
-
+        Blog::createNotificationBlog($user,$producto);
         Blog::create($producto);
         return redirect()->route('blogs.index');
     }
