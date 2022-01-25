@@ -87,17 +87,27 @@ class BlogController extends Controller
             'contenido' => 'required',
             'image' => 'required|image|mimes:png,jpg,PNG,JPG|max:1024'
         ]);
-    
-        $producto = $request->all();
+        $producto = new Blog();
+        $input = $request->all();
     
         if($imagen = $request->file('image')){
             $rutaGuardarImagen = 'imagen/';
             $imgServ = date('YmdHis'). ".". $imagen->getClientOriginalExtension();
             $imagen->move($rutaGuardarImagen, $imgServ);
-            $producto['image'] = "$imgServ";
+            $input['image'] = "$imgServ";
         }
+        $user = User::find(auth()->user()->id);
+
+        $producto->id_plate =  $input['id_plate'];
+        $producto->titulo =  $input['titulo'];
+        $producto->contenido =  $input['contenido'];
+        $producto->image =  $input['image'];
+
+        //return $producto;
+
         Blog::createNotificationBlog($user,$producto);
-        Blog::create($producto);
+        //Blog::create($producto);
+        $producto->save();
         return redirect()->route('blogs.index');
     }
 
