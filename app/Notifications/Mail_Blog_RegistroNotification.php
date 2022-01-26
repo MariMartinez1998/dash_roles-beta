@@ -44,11 +44,11 @@ class Mail_Blog_RegistroNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('These are your data registered on our platform')
-                    ->line('plate: '.$this->producto->id_plate)
-                    ->line('title: '.$this->producto->titulo)
-                    ->line('description: '.$this->producto->contenido)
-                    ->action('Notification Action', url('/'))
+                    ->line('This is the service registered on our platform:')
+                    ->line('Plate: '.$this->producto->id_plate)
+                    ->line('Title: '.$this->producto->titulo)
+                    ->line('Description: '.$this->producto->contenido)
+                    ->action('Enter Here', url('/'))
                     ->line('Thank you for using our platform!');
     }
 

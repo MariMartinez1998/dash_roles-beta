@@ -29,6 +29,7 @@ class MailBlogRegistroNotification
     public function handle($event)
     {
         $user = User::find($event->user->id);
+        
         Notification::send($user, new Mail_Blog_RegistroNotification($event->user,$event->producto));
     }
 }

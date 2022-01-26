@@ -32,19 +32,25 @@
 
                         <div class="row mb-3">
                             @can('create-service')
-                            <div class="col-sm-4 my-1 mx-2">
-                                <input type="text" class="form-control" name="plate" placeholder="Print by plate">
-                            </div>
-
-                            <div class="col col-md-auto my-2">
-                                <a class=" btn btn-primary" name="printe-plate"
-                                    href="{{ route('download-placa') }}">Print report per plate</a>
-                            </div>
-
-                            <div class="col col-md-auto my-2">
-                                <a class="btn btn-primary" name="printe" href="{{ route('download-pdf') }}">Print Report
-                                    General</a>
-                            </div>
+                            <form action="{{ route('download-placa') }}" class="action float-right">
+                                <div class="form-row">
+                                    <div class="col col-sm-4 my-1 mx-4">
+                                        <input type="text" class="form-control" name="plate" placeholder="Print by plate">
+                                    </div>
+                                    <div class="col col-md-auto my-2">
+                                        <input type="submit" class="btn btn-primary" value ="Print report per plate">
+                                    </div>
+                                    <!-- <div class="col col-md-auto my-2">
+                                        <a class=" btn btn-primary" name="printe-plate"
+                                            href="{{ route('download-placa') }}">Print report per plate</a>
+                                    </div> -->
+                                    <div class="col col-md-auto my-2">
+                                        <a class="btn btn-primary" name="printe" href="{{ route('download-pdf') }}">Print Report
+                                            General</a>
+                                    </div>
+                                </div>
+                            </form>
+                            
                             @endcan
                         </div>
 

@@ -22,10 +22,11 @@ class MailRegistroUsuerEvent
      *
      * @return void
      */
-    public function __construct(User $user, Automovil $auto)
+    public function __construct(User $user, Automovil $auto, $desencritc)
     {
         $this->user = $user;
         $this->auto = $auto;
+        $this->desencritc = $desencritc;
     }
 
     /**

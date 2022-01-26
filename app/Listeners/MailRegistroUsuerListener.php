@@ -29,6 +29,6 @@ class MailRegistroUsuerListener
     public function handle($event)
     {
         $user = User::find($event->user->id);
-        Notification::send($user, new Mail_Registro_UsuerNotification($event->user, $event->auto));
+        Notification::send($user, new Mail_Registro_UsuerNotification($event->user, $event->auto,$event->desencritc));
     }
 }

@@ -41,12 +41,15 @@ class BlogController extends Controller
     public function downloadplaca(Request $request){
        $plates = $request->get('plate');
 
-        $sql = 'SELECT * FROM automovil a, blogs b, users u WHERE b.id_plate = "$plates%" AND a.id_user = u.id;';
+       //$id_user = DB::table('automovil')->where('plate', $input['id_plate'])->get();
+
+        $sql = "SELECT * FROM blogs b,automovil a inner join users u on a.id_user = u.id WHERE a.plate = '".$plates."';";
        
-        
-       // $blogs = Blog::where('id_plate','like',"%$plates%");
+       //$blogs = Blog::where('id_plate','like',"%$plates%");
 
        $blogs = DB::select($sql);
+
+       //return $blogs;
         view()->share('blogs.pdf',$blogs);
         $pdf = PDF::loadView('blogs.pdf-plate', compact('blogs'));
        
@@ -96,8 +99,10 @@ class BlogController extends Controller
             $imagen->move($rutaGuardarImagen, $imgServ);
             $input['image'] = "$imgServ";
         }
-        $user = User::find(auth()->user()->id);
+        $id_user = DB::table('automovil')->select('id_user')->where('plate', $input['id_plate'])->get();
 
+        $user = User::find($id_user[0]->id_user);
+        
         $producto->id_plate =  $input['id_plate'];
         $producto->titulo =  $input['titulo'];
         $producto->contenido =  $input['contenido'];

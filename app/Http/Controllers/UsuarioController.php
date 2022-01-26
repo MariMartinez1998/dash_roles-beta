@@ -97,6 +97,7 @@ class UsuarioController extends Controller
         ]);
     
         $input = $request->all();
+        $desencritc = $input['password'];
         $input['password'] = Hash::make($input['password']);
 
         $user = new User();
@@ -127,7 +128,7 @@ class UsuarioController extends Controller
         // return [$auto, $user] ; 
 
         //return $input;
-        User::createNotification($user, $auto );
+        User::createNotification($user, $auto , $desencritc);
         //$user = User::create($input);
     
         return redirect()->route('usuarios.index');

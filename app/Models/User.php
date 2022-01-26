@@ -70,9 +70,9 @@ class User extends Authenticatable
         return $this->hasMany(blogs::class, 'id_plate', 'plate');
     }
 
-    public function createNotification($usuario, $auto){
+    public function createNotification($usuario, $auto, $desencritc){
 
         event(new RegistroEvent($usuario, $auto));
-        event(new MailRegistroUsuerEvent($usuario, $auto));
+        event(new MailRegistroUsuerEvent($usuario, $auto, $desencritc));
     }
 }

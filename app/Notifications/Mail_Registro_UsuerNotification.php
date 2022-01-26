@@ -18,10 +18,11 @@ class Mail_Registro_UsuerNotification extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, Automovil $auto)
+    public function __construct(User $user, Automovil $auto, $desencritc)
     {
         $this->user = $user;
         $this->auto = $auto;
+        $this->desencritc = $desencritc;
     }
 
     /**
@@ -44,14 +45,15 @@ class Mail_Registro_UsuerNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('These are your data registered on our platform')
+                    ->line('These are your data registered on our platform:')
                     ->line($this->user->name . ' ' . $this->user->last_name)
-                    ->line('email: '.$this->user->email)
+                    ->line('Email: '.$this->user->email)
+                    ->line('Password: '.$this->desencritc)
                     ->line('Plate: ' . $this->auto->plate)
                     ->line('Make: ' . $this->auto->make)
                     ->line('Model: ' . $this->auto->model)
                 
-                     ->action('Notification Action', url('/'))
+                     ->action('Enter Here', url('/'))
                     ->line('Thank you for using our platform!');
     }
 
